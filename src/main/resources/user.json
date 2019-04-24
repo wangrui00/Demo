@@ -1,0 +1,17 @@
+[
+  {
+    "userId":"1339b4b1-58ad-4155-b0b5-f64cb94f9091",
+    "nickName":"张三",
+    "headPic":"http://192.168.0.23:8080/FileServer/headPic/1.png"
+  },
+  {
+    "userId":"4f411c5d-f68b-4cc7-a6a3-8e1bf156d0f4",
+    "nickName":"李四",
+    "headPic":"http://192.168.0.23:8080/FileServer/headPic/2.png"
+  },
+  {
+    "userId":"547399f5-8654-4124-8c59-890f31d1363a",
+    "nickName":"王五",
+    "headPic":"http://192.168.0.23:8080/FileServer/headPic/3.png"
+  }
+]

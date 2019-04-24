@@ -1,0 +1,29 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  ssl:
+    key-store: 123456.jks
+    key-store-password: 123456
+    key-store-type: JKS
+  port: 8989
+  servlet:
+    context-path: /Demo
+
+context:
+  applicationPath: demo
+
+role:
+  #maps: {1: 管理员, 2: 嘉宾, 3: 观众}
+  manager: 1
+  guest: 2
+  audience: 3
+
+sdk:
+  appId: b289e574dbae4ed9b63702877ff2b51f
+  appSecret: 88e8a386e663492c8d08dc63902b2c7c
+  sdkUrl: https://sdk.chatboard.cn:8443/Chatboard
+
+meeting:
+  width: 1920
+  height: 1080
+  bgColor: 1

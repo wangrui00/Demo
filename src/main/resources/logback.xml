@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="60 seconds">
+	<property name="log_home" value="/data/demo" />
+	<!-- 错误日志配置 -->
+	<appender name="ERROR-NORMAL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log_home}/logs/error.log</File>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[%d{MM-dd-HH:mm:ss.SSS}] [%-5.5level][%-5.20thread] - %-25.25file[%-4.4line] %msg%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${log_home}/logs/history/error.log.%i</FileNamePattern>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>50MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	<appender name="ERROR-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold>0</discardingThreshold>
+		<queueSize>1025</queueSize>
+		<includeCallerData>true</includeCallerData>
+		<appender-ref ref="ERROR-NORMAL" />
+	</appender>
+
+	<!-- 默认日志配置 -->
+	<appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log_home}/logs/service.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[%d{MM-dd-HH:mm:ss.SSS}] [%-5.5level][%-5.12thread] - %-25.25file[%-4.4line] %msg%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${log_home}/logs/history/service.log.%i</FileNamePattern>
+			<maxIndex>5</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>500MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<appender name="A1-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>1025</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref ="A1"/>
+    </appender>
+
+	<!--  apache日志配置 -->
+	<appender name="apache-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log_home}/logs/apache.log</File>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[%d{MM-dd-HH:mm:ss.SSS}] [%-5.5level] -%-25.25file[%-4.4line] %msg%n</pattern>
+		</layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${log_home}/logs/history/apache.log.%i</FileNamePattern>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>50MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	<!--<logger name="org.apache" level="info" additivity="false">
+		<appender-ref ref="apache-appender" />
+	</logger>-->
+
+	<!-- redis日志配置 -->
+	<appender name="redis-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log_home}/logs/redis.log</File>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+        	<pattern>[%d{MM-dd-HH:mm:ss.SSS}] [%-5.5level] - %-25.25file[%-4.4line] %msg%n</pattern>
+        </layout>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+        	<FileNamePattern>${log_home}/logs/history/redis.log.%i</FileNamePattern>
+        	<maxIndex>3</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        	<MaxFileSize>50MB</MaxFileSize>
+        </triggeringPolicy>
+	</appender>
+    <logger name="redis" level="info" additivity="false">
+        <appender-ref ref="redis-appender" />
+    </logger>
+
+	<!-- Kafka 日志配置 -->
+    <appender name="kafka-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log_home}/logs/kafka.log</File>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[%d{MM-dd-HH:mm:ss.SSS}] [%-5.5level] - %-25.25file[%-4.4line] %msg%n</pattern>
+        </layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${log_home}/logs/history/kafka.log.%i</FileNamePattern>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>50MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+    <logger name="org.apache.kafka" level="ERROR" additivity="false">
+        <appender-ref ref="kafka-appender" />
+    </logger>
+    <logger name="org.springframework.kafka" level="ERROR" additivity="false">
+        <appender-ref ref="kafka-appender" />
+    </logger>
+    <appender name="db-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log_home}/logs/db.log</File>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[%d{MM-dd-HH:mm:ss.SSS}] [%-5.5level] - %-25.25file[%-4.4line] %msg%n</pattern>
+        </layout>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${log_home}/logs/history/db.log.%i</FileNamePattern>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>50MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+    <logger name="org.springframework.jdbc.core" level="ERROR" additivity="false">
+        <appender-ref ref="db-appender" />
+    </logger>
+    <logger name="WiseFinger.WhiteBoard.db.ChatboardJdbcTemplate" level="ERROR" additivity="false">
+        <appender-ref ref="db-appender" />
+    </logger>
+    <logger name="org.springframework.jdbc.support.JdbcAccessor" level="ERROR" additivity="false">
+        <appender-ref ref="db-appender" />
+    </logger>
+    <logger name="org.springframework.beans.factory.InitializingBean" level="ERROR" additivity="false">
+        <appender-ref ref="db-appender" />
+    </logger>
+    <logger name="com.alibaba.druid.pool.PreparedStatementPool" level="ERROR" additivity="false">
+        <appender-ref ref="db-appender" />
+    </logger>
+    <logger name="org.springframework.jdbc.datasource.DataSourceUtils" level="ERROR" additivity="false">
+        <appender-ref ref="db-appender" />
+    </logger>
+    <logger name="com.alibaba.druid.filter.logging" level="ERROR" additivity="false">
+        <appender-ref ref="db-appender" />
+    </logger>
+	<logger name="httpclient.wire" level="ERROR" additivity="false">
+		<appender-ref ref="db-appender" />
+	</logger>
+	<logger name="io.lettuce" level="INFO" additivity="true">
+		<appender-ref ref="db-appender" />
+	</logger>
+	<root level="debug">
+		<appender-ref ref="A1-ASYNC" />
+		<appender-ref ref="ERROR-ASYNC" />
+	</root>
+</configuration>
+
