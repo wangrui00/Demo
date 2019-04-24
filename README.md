@@ -6,6 +6,7 @@ maven install 在target目录下生成 demo-0.0.1-SNAPSHOT.jar 包
 # 启动
 java -jar demo-0.0.1-SNAPSHOT.jar
 # 配置文件
+全局的配置文件：
 application-test.yml
 
   server:
@@ -34,6 +35,6 @@ sdk:
   sdkUrl: https://****************************
 
 meeting:
-  width: 1920
-  height: 1080
-  bgColor: 1
+  width: 1920   //白板宽
+  height: 1080  //白板高
+  bgColor: 1    //白板背景色 目前只支持三种 1:白色 2：黑色  3：绿色
