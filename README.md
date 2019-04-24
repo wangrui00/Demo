@@ -3,7 +3,7 @@
 # 编译打包
 用maven打包
 maven install 在target目录下生成 demo-0.0.1-SNAPSHOT.jar 包
-# 启动
+# 启动服务
 java -jar demo-0.0.1-SNAPSHOT.jar
 # 配置文件
 全局的配置文件：
@@ -16,9 +16,9 @@ server:
     uri-encoding: UTF-8
   ssl:
     
-    key-store: 123456.jks   
+    key-store: 123456.jks       //ssl证书
     
-    key-store-password: 123456
+    key-store-password: 123456  //ssl密码
     
     key-store-type: JKS
   port: 8989
@@ -39,7 +39,7 @@ role:
 
 sdk:
 
-    appId: *********************************
+    appId: *********************************    
     appSecret: *********************************
     sdkUrl: https://****************************
 
@@ -48,3 +48,8 @@ meeting:
     width: 1920   //白板宽
     height: 1080  //白板高
     bgColor: 1    //白板背景色 目前只支持三种 1:白色 2：黑色  3：绿色
+    
+# 创建会议协议 JsonRpc
+  JSON-RPC，是一个无状态且轻量级的远程过程调用（RPC）传送协议.
+  
+  
