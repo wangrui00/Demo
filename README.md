@@ -9,7 +9,7 @@ java -jar demo-0.0.1-SNAPSHOT.jar
 全局的配置文件：
 application-test.yml
 
-  server:
+server:
   
   tomcat:
   
@@ -22,24 +22,29 @@ application-test.yml
     
     key-store-type: JKS
   port: 8989
-  servlet:
+  
+    servlet:
     context-path: /Demo
 
 context:
-  applicationPath: demo
+    
+    applicationPath: demo
 
 role:
-  #{1: 管理员, 2: 嘉宾, 3: 观众}
-  manager: 1
-  guest: 2
-  audience: 3
+
+    #{1: 管理员, 2: 嘉宾, 3: 观众}
+    manager: 1
+    guest: 2
+    audience: 3
 
 sdk:
-  appId: *********************************
-  appSecret: *********************************
-  sdkUrl: https://****************************
+
+    appId: *********************************
+    appSecret: *********************************
+    sdkUrl: https://****************************
 
 meeting:
-  width: 1920   //白板宽
-  height: 1080  //白板高
-  bgColor: 1    //白板背景色 目前只支持三种 1:白色 2：黑色  3：绿色
+    
+    width: 1920   //白板宽
+    height: 1080  //白板高
+    bgColor: 1    //白板背景色 目前只支持三种 1:白色 2：黑色  3：绿色
