@@ -10,11 +10,16 @@ java -jar demo-0.0.1-SNAPSHOT.jar
 application-test.yml
 
   server:
+  
   tomcat:
+  
     uri-encoding: UTF-8
   ssl:
+    
     key-store: 123456.jks   
+    
     key-store-password: 123456
+    
     key-store-type: JKS
   port: 8989
   servlet:
