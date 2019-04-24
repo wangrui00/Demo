@@ -12,7 +12,7 @@ import com.chatboard.message.MeetingProperty;
 public class RemoteManager {
 
     /**
-     * 创建白板
+     * 创建会议
      */
     public static String createMeeting(MeetingProperty property) {
         String url = AppConfig.sdkUrl + "/meeting";

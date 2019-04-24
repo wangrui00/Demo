@@ -13,9 +13,9 @@ public class AppConfig {
 
     public static String sdkUrl = "http://192.168.0.31:8080/Chatboard";
 
-    public static String appId = "b289e574dbae4ed9b63702877ff2b51f";
+    public static String appId = "********************************* ";
 
-    public static String appSecret = "88e8a386e663492c8d08dc63902b2c7c";
+    public static String appSecret = "********************************* ";
 
     @Value("${sdk.appId}")
     public void setAppId(String appId){

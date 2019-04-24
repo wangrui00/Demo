@@ -19,9 +19,9 @@ role:
   audience: 3
 
 sdk:
-  appId: b289e574dbae4ed9b63702877ff2b51f
-  appSecret: 88e8a386e663492c8d08dc63902b2c7c
-  sdkUrl: https://sdk.chatboard.cn:8443/Chatboard
+  appId: *********************************
+  appSecret: *********************************
+  sdkUrl: https://*********************************
 
 meeting:
   width: 1920
